@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@600,700&display=swap");
+
+@theme {
+  --color-brand-blue: #003BE2;
+  --color-brand-blue-hover: #002db8;
+  --color-brand-blue-dark: #002288;
+  --color-brand-lime: #D4FB20;
+  --color-brand-lime-hover: #c0e815;
+  --color-brand-lime-dark: #CBFC01;
+  --color-brand-dark: #040819;
+  --color-brand-dark-2: #242528;
+  --color-brand-body: #424348;
+  --color-brand-muted: #4B4C53;
+  --color-brand-gray: #4F4F4F;
+  --color-brand-subtle: #82868E;
+  --color-brand-light-gray: #F5F5F6;
+  --color-brand-light-bg: #FAFAFA;
+  --color-brand-blue-tint: #F1F4FE;
+  --color-brand-border: #E5E6E8;
+  --color-brand-border-dark: #CED0D3;
+
+  --font-sans: 'Satoshi', var(--font-poppins), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-poppins: var(--font-poppins), 'Poppins', sans-serif;
+  --font-display: 'Clash Display', var(--font-poppins), sans-serif;
+}
+
+:root {
+  --bg-primary: #ffffff;
+  --text-primary: #242528;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blueprint Grid Background Pattern */
+.bg-grid-pattern {
+  background-size: 120px 120px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+.bg-grid-pattern-subtle {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003be2;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #002db8;
+}
+
+/* Animations & Transitions */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Scroll reveal helper */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
