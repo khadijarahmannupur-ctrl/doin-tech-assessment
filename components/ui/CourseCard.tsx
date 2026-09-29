@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { Course } from "@/types";
-import { Rating } from "@/components/ui/Rating";
 
 interface CourseCardProps {
   course: Course;
@@ -11,10 +10,10 @@ interface CourseCardProps {
 export const CourseCard: React.FC<CourseCardProps> = ({ course, className = "" }) => {
   return (
     <article
-      className={`group bg-white rounded-[24px] border border-[#E5E6E8] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 ${className}`}
+      className={`group bg-white rounded-[24px] border border-[#E5E6E8] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1 ${className}`}
     >
-      {/* Course Thumbnail */}
-      <div className="relative w-full aspect-[16/10] bg-gray-100 overflow-hidden">
+      {/* Course Thumbnail + Overlaid Metadata Strip */}
+      <div className="relative w-full aspect-[341/196] bg-gray-100 overflow-hidden">
         <Image
           src={course.image}
           alt={course.title}
@@ -22,74 +21,68 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course, className = "" }
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-          <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#242528] shadow-sm">
-            {course.level}
-          </span>
+
+        {/* Frosted Glass Meta Bar (bottom of image) matching Screenshot 4 & 5 */}
+        <div className="absolute inset-x-3 bottom-3 bg-black/40 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center justify-between text-[11px] text-white font-sans">
+          <span>{course.lessonsCount} Lessons</span>
+          <span className="opacity-60">•</span>
+          <span>{course.duration}</span>
+          <span className="opacity-60">•</span>
+          <span>{course.commentsCount} Comments</span>
         </div>
       </div>
 
-      {/* Course Content */}
+      {/* Course Body Content */}
       <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between text-xs text-[#82868E] mb-2 font-sans">
-            <span>by {course.instructor}</span>
-            <div className="flex items-center gap-1 font-semibold text-[#242528]">
-              <Rating score={course.rating} showScoreText={true} size="sm" />
+          {/* Title & Rating Row */}
+          <div className="flex items-start justify-between gap-2 mb-1.5">
+            <h3 className="font-poppins font-semibold text-lg text-[#000000] group-hover:text-[#003BE2] transition-colors line-clamp-1 leading-snug">
+              {course.title}
+            </h3>
+            <div className="flex items-center gap-1 font-semibold text-sm text-[#4B4C53] shrink-0">
+              <span>{course.rating.toFixed(1)}</span>
+              <span className="text-[#CED0D3]">★</span>
             </div>
           </div>
 
-          <h3 className="font-poppins font-semibold text-lg sm:text-xl text-[#000000] group-hover:text-[#003BE2] transition-colors line-clamp-2 leading-snug">
-            {course.title}
-          </h3>
+          {/* Instructor */}
+          <p className="text-xs text-[#82868E] font-sans mb-4">
+            by {course.instructor}
+          </p>
 
-          {/* Metadata Row */}
-          <div className="mt-4 pt-4 border-t border-[#F5F5F6] flex flex-wrap items-center gap-y-2 gap-x-4 text-xs text-[#4F4F4F] font-sans">
-            <span className="flex items-center gap-1.5">
-              <svg className="w-4 h-4 text-[#82868E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          {/* Level Badge + Avatar Stack Row */}
+          <div className="flex items-center justify-between mb-4">
+            {/* Beginner Pill Badge */}
+            <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F5F5F6] rounded-full text-xs font-medium text-[#4B4C53]">
+              {/* Bar chart icon */}
+              <svg className="w-3.5 h-3.5 text-[#82868E]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
               </svg>
-              {course.lessonsCount} Lessons
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg className="w-4 h-4 text-[#82868E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {course.duration}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <svg className="w-4 h-4 text-[#82868E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-              {course.commentsCount} Comments
-            </span>
+              <span>{course.level}</span>
+            </div>
+
+            {/* Avatar Stack with 26+ */}
+            <div className="flex items-center">
+              <Image
+                src="/assets/course-student-avatars.png"
+                alt="Student avatars"
+                width={128}
+                height={32}
+                className="h-6 w-auto object-contain"
+              />
+            </div>
           </div>
         </div>
 
-        {/* Footer: Price & Enroll CTA */}
-        <div className="mt-5 pt-4 border-t border-[#F5F5F6] flex items-center justify-between">
-          <div className="flex items-baseline gap-1">
-            <span className="font-poppins font-bold text-xl sm:text-2xl text-[#003BE2]">
-              {course.price}
-            </span>
-            {course.pricePeriod && (
-              <span className="text-xs text-[#82868E]">{course.pricePeriod}</span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <div className="flex items-center -space-x-2">
-              <div className="w-6 h-6 rounded-full bg-[#003BE2] text-white text-[10px] font-bold flex items-center justify-center border border-white">
-                {course.studentsCount}
-              </div>
-            </div>
-            <button
-              type="button"
-              className="px-3.5 py-1.5 bg-[#F5F5F6] hover:bg-[#003BE2] hover:text-white text-[#242528] rounded-full text-xs font-semibold transition-colors"
-            >
-              Enroll
-            </button>
-          </div>
+        {/* Price Row */}
+        <div className="pt-3 border-t border-[#F5F5F6] flex items-baseline gap-1">
+          <span className="font-poppins font-bold text-xl text-[#003BE2]">
+            {course.price}
+          </span>
+          {course.pricePeriod && (
+            <span className="text-xs text-[#82868E] font-sans">{course.pricePeriod}</span>
+          )}
         </div>
       </div>
     </article>

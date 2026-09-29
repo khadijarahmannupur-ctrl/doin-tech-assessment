@@ -2,13 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { navItems } from "@/data/content";
-import { Button } from "@/components/ui/Button";
 
 interface NavbarProps {
   activeSection?: string;
-  isTransparent?: boolean;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
@@ -45,20 +42,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[#003BE2]/90 backdrop-blur-md shadow-lg py-3 border-b border-white/10"
-          : "bg-transparent py-5"
+          ? "bg-[#003BE2]/95 backdrop-blur-md shadow-lg py-3.5 border-b border-white/10"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg p-1"
+          className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
           aria-label="ByteSpace Home"
         >
-          <div className="w-[32px] h-[32px] relative flex items-center justify-center">
+          {/* Exact Logo Icon from Figma */}
+          <div className="w-[30px] h-[30px] relative flex items-center justify-center">
             <svg
-              className="w-7 h-7 text-[#D4FB20] transition-transform duration-300 group-hover:scale-110"
+              className="w-7 h-7 text-[#D4FB20] transition-transform duration-300 group-hover:scale-105"
               viewBox="0 0 29 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
               />
             </svg>
           </div>
-          <span className="font-bold text-2xl font-display tracking-tight text-white">
+          <span className="font-bold text-[22px] font-display tracking-tight text-white">
             ByteSpace
           </span>
         </Link>
@@ -88,67 +86,105 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-base font-medium font-sans transition-all duration-200 py-1 relative hover:text-white ${
-                  isActive ? "text-white font-semibold" : "text-white/80"
+                className={`text-[15px] font-medium font-sans transition-all duration-200 py-1 relative hover:text-white ${
+                  isActive ? "text-white font-semibold" : "text-white/85"
                 }`}
               >
                 {item.label}
-                {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D4FB20] rounded-full animate-pulse-glow" />
-                )}
               </a>
             );
           })}
         </nav>
 
-        {/* Desktop Auth Buttons */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Auth Buttons & Cart Icon */}
+        <div className="hidden md:flex items-center gap-6">
           <Link
             href="/login"
-            className="text-base font-medium font-sans text-white/90 hover:text-white px-3 py-2 transition-colors duration-200"
+            className="text-[15px] font-medium font-sans text-white/90 hover:text-white transition-colors"
           >
             Sign In
           </Link>
-          <Button
+          <Link
             href="/register"
-            variant="primary"
-            size="sm"
-            className="px-5 font-semibold text-sm shadow-md hover:shadow-lg transition-all"
+            className="text-[15px] font-medium font-sans text-white/90 hover:text-white transition-colors"
           >
             Join Us
-          </Button>
+          </Link>
+
+          {/* Shopping Bag / Cart Icon (from Figma screenshot 1) */}
+          <button
+            type="button"
+            aria-label="Shopping Cart"
+            className="text-white/90 hover:text-white transition-colors p-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.8}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
+            </svg>
+          </button>
         </div>
 
         {/* Mobile Hamburger Button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-white hover:text-[#D4FB20] focus:outline-none focus:ring-2 focus:ring-white rounded-lg transition-colors"
-          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={mobileMenuOpen}
-        >
-          {mobileMenuOpen ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        <div className="flex md:hidden items-center gap-3">
+          <button
+            type="button"
+            aria-label="Shopping Cart"
+            className="text-white p-1"
+          >
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={1.8}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              />
             </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-1.5 text-white hover:text-[#D4FB20] focus:outline-none focus:ring-2 focus:ring-white rounded-lg transition-colors"
+            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-0 top-[60px] bg-[#003BE2] border-b border-white/20 shadow-2xl p-6 transition-all animate-in slide-in-from-top duration-300">
+        <div className="md:hidden fixed inset-x-0 top-[68px] bg-[#003BE2] border-b border-white/20 shadow-2xl p-6 transition-all animate-in slide-in-from-top duration-300">
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-colors"
+                className="text-base font-medium text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg transition-colors"
               >
                 {item.label}
               </a>
@@ -161,15 +197,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
               >
                 Sign In
               </Link>
-              <Button
+              <Link
                 href="/register"
-                variant="primary"
-                size="md"
-                className="w-full text-center font-bold"
                 onClick={() => setMobileMenuOpen(false)}
+                className="text-center py-2.5 bg-[#D4FB20] text-[#242528] font-bold rounded-full transition-colors"
               >
                 Join Us
-              </Button>
+              </Link>
             </div>
           </nav>
         </div>

@@ -9,27 +9,33 @@ export const PlatformHighlights: React.FC = () => {
       <Container>
         {/* ================= PART A: Professional Growth ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24 lg:mb-36">
-          {/* Left: Interactive Visual Card Stack */}
+          {/* Left: Course Preview Card */}
           <div className="lg:col-span-6 relative flex items-center justify-center">
             <div className="relative w-full max-w-[480px]">
               {/* Main Course Preview Card */}
               <div className="bg-white rounded-[24px] p-6 shadow-xl border border-[#E5E6E8] relative z-10">
-                <div className="relative w-full aspect-[16/10] rounded-[16px] overflow-hidden bg-gray-100 mb-5">
+                <div className="relative w-full aspect-[341/196] rounded-[16px] overflow-hidden bg-gray-100 mb-5">
                   <Image
-                    src="/assets/course-figma.png"
+                    src="/assets/course-figma-sketch.png"
                     alt="Learn Figma from Basic"
                     fill
                     className="object-cover"
                   />
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-[#242528]">
-                    Beginner
-                  </span>
+                  {/* Frosted Glass Meta Bar */}
+                  <div className="absolute inset-x-3 bottom-3 bg-black/40 backdrop-blur-md rounded-full px-3 py-1.5 flex items-center justify-between text-[11px] text-white font-sans">
+                    <span>17 Lessons</span>
+                    <span className="opacity-60">•</span>
+                    <span>2 hours 16 mins</span>
+                    <span className="opacity-60">•</span>
+                    <span>59 Comments</span>
+                  </div>
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-[#82868E] mb-2 font-sans">
                   <span>by purepearl studio</span>
                   <div className="flex items-center gap-1 text-[#242528] font-bold">
-                    <span className="text-[#FFB800]">★</span> 4.5
+                    <span>4.5</span>
+                    <span className="text-[#FFB800]">★</span>
                   </div>
                 </div>
 
@@ -38,17 +44,26 @@ export const PlatformHighlights: React.FC = () => {
                 </h3>
 
                 <div className="mt-4 pt-4 border-t border-[#F5F5F6] flex items-center justify-between">
-                  <span className="font-poppins font-bold text-2xl text-[#300B6A]">
-                    $25 <span className="text-xs text-[#82868E] font-normal">/lifetime</span>
-                  </span>
-                  <div className="w-8 h-8 rounded-full bg-[#003BE2] text-white text-xs font-bold flex items-center justify-center">
-                    26+
+                  <div className="flex items-center gap-1.5 px-3 py-1 bg-[#F5F5F6] rounded-full text-xs font-medium text-[#4B4C53]">
+                    <svg className="w-3.5 h-3.5 text-[#82868E]" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                    </svg>
+                    <span>Beginner</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Image
+                      src="/assets/course-student-avatars.png"
+                      alt="Student avatars"
+                      width={128}
+                      height={32}
+                      className="h-6 w-auto object-contain"
+                    />
                   </div>
                 </div>
               </div>
 
               {/* Floating Progress Badge */}
-              <div className="absolute -bottom-8 -left-4 sm:-left-8 bg-white/95 backdrop-blur-md rounded-[20px] p-5 shadow-2xl border border-white/60 z-20 flex items-center gap-4 animate-float-slow">
+              <div className="absolute -bottom-8 -left-4 sm:-left-8 bg-white/95 backdrop-blur-md rounded-[20px] p-4 sm:p-5 shadow-2xl border border-white/60 z-20 flex items-center gap-4 animate-float-slow">
                 <div className="relative w-12 h-12 flex items-center justify-center">
                   <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
                     <path
