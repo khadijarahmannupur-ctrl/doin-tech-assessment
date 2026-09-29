@@ -22,24 +22,33 @@ export const partnerLogos = [
   { name: "Logoipsum 5", image: "/assets/logoipsum-5.png" },
 ];
 
-export const courseFilterCategories = [
-  // Row 1
-  { id: "featured", name: "Featured", slug: "featured" },
-  { id: "music", name: "Music", slug: "music" },
-  { id: "drawing-painting", name: "Drawing & Painting", slug: "drawing-painting" },
-  { id: "marketing", name: "Marketing", slug: "marketing" },
-  { id: "animation", name: "Animation", slug: "animation" },
-  { id: "social-media", name: "Social Media", slug: "social-media" },
-  { id: "ui-ux", name: "UI/UX Design", slug: "ui-ux" },
-  { id: "creative-marketing", name: "Creative Marketing", slug: "creative-marketing" },
-  // Row 2
-  { id: "digital-illustration", name: "Digital Illustration", slug: "digital-illustration" },
-  { id: "film-video", name: "Film & Video", slug: "film-video" },
-  { id: "crafts", name: "Crafts", slug: "crafts" },
-  { id: "freelance", name: "Freelance & Entrepreneurship", slug: "freelance" },
-  { id: "graphic-design", name: "Graphic Design", slug: "graphic-design" },
-  { id: "photography", name: "Photography", slug: "photography" },
-];
+export const courseFilterCategories = {
+  row1: [
+    { id: "featured", name: "Featured", slug: "featured" },
+    { id: "music", name: "Music", slug: "music" },
+    { id: "drawing-painting", name: "Drawing & Painting", slug: "drawing-painting" },
+    { id: "marketing", name: "Marketing", slug: "marketing" },
+    { id: "animation", name: "Animation", slug: "animation" },
+    { id: "social-media", name: "Social Media", slug: "social-media" },
+    { id: "ui-ux", name: "UI/UX Design", slug: "ui-ux" },
+    { id: "creative-marketing", name: "Creative Marketing", slug: "creative-marketing" },
+  ],
+  row2: [
+    { id: "digital-illustration", name: "Digital Illustration", slug: "digital-illustration" },
+    { id: "film-video", name: "Film & Video", slug: "film-video" },
+    { id: "crafts", name: "Crafts", slug: "crafts" },
+    { id: "freelance", name: "Freelance & Entrepreneurship", slug: "freelance" },
+    { id: "graphic-design", name: "Graphic Design", slug: "graphic-design" },
+    { id: "photography", name: "Photography", slug: "photography" },
+  ],
+  row3: [
+    { id: "productivity", name: "Productivity", slug: "productivity" },
+    { id: "web-dev", name: "Web Development", slug: "web-dev" },
+    { id: "data-science", name: "Data Science", slug: "data-science" },
+    { id: "cooking", name: "Cooking", slug: "cooking" },
+    { id: "more", name: "+ More", slug: "more", isMore: true },
+  ],
+};
 
 export const diverseCategories: Category[] = [
   { id: "cat-design", name: "Design", slug: "design", icon: "/assets/icon-category-design.png" },
@@ -185,23 +194,16 @@ export const testimonials: Testimonial[] = [
 
 export const footerLinkGroups: FooterLinkGroup[] = [
   {
-    title: "Featured Courses",
-    links: [
-      { label: "Business", href: "#courses" },
-      { label: "IT", href: "#courses" },
-      { label: "Design", href: "#courses" },
-      { label: "Development", href: "#courses" },
-      { label: "Marketing", href: "#courses" },
-    ],
-  },
-  {
     title: "Featured Categories",
     links: [
+      { label: "Business", href: "#categories" },
+      { label: "IT", href: "#categories" },
+      { label: "Design", href: "#categories" },
+      { label: "Development", href: "#categories" },
+      { label: "Marketing", href: "#categories" },
       { label: "Photography", href: "#categories" },
       { label: "Finance", href: "#categories" },
       { label: "Sport", href: "#categories" },
-      { label: "Design", href: "#categories" },
-      { label: "Development", href: "#categories" },
     ],
   },
   {

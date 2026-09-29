@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { footerLinkGroups, footerLegalLinks } from "@/data/content";
 
 export const Footer: React.FC = () => {
@@ -15,7 +14,7 @@ export const Footer: React.FC = () => {
     if (email.trim()) {
       setSubscribed(true);
       setEmail("");
-      setTimeout(() => setSubscribed(false), 5000);
+      setTimeout(() => setSubscribed(false), 4000);
     }
   };
 
@@ -23,14 +22,14 @@ export const Footer: React.FC = () => {
     <footer className="bg-white border-t border-[#E5E6E8] pt-16 sm:pt-20 pb-12">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column: Brand & Newsletter */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          {/* Left Column: Brand Logo & Newsletter */}
+          <div className="lg:col-span-6 flex flex-col justify-between">
             <div>
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2.5 mb-4 inline-flex group">
-                <div className="w-8 h-8 relative flex items-center justify-center">
+              <Link href="/" className="flex items-center gap-2 mb-4 inline-flex group">
+                <div className="w-[30px] h-[30px] relative flex items-center justify-center">
                   <svg
-                    className="w-7 h-7 text-[#003BE2] group-hover:scale-110 transition-transform"
+                    className="w-7 h-7 text-[#003BE2] group-hover:scale-105 transition-transform"
                     viewBox="0 0 29 32"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,7 @@ export const Footer: React.FC = () => {
                     />
                   </svg>
                 </div>
-                <span className="font-bold text-2xl font-display tracking-tight text-[#242528]">
+                <span className="font-bold text-[22px] font-display tracking-tight text-[#242528]">
                   ByteSpace
                 </span>
               </Link>
@@ -65,9 +64,12 @@ export const Footer: React.FC = () => {
                   className="flex-1 h-[46px] px-4 rounded-full border border-[#CED0D3] bg-[#FAFAFA] font-sans text-sm text-[#242528] placeholder:text-[#82868E] focus:outline-none focus:ring-2 focus:ring-[#003BE2] focus:border-transparent transition-all"
                   aria-label="Email address for newsletter"
                 />
-                <Button type="submit" variant="primary" size="md" className="shrink-0 px-6 font-semibold">
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-full bg-[#D4FB20] hover:bg-[#c0e815] text-[#242528] font-sans font-semibold text-sm transition-colors shadow-sm"
+                >
                   Subscribe
-                </Button>
+                </button>
               </form>
 
               {subscribed && (
@@ -76,14 +78,14 @@ export const Footer: React.FC = () => {
                 </p>
               )}
 
-              <p className="mt-4 text-xs text-[#82868E] leading-normal max-w-[400px]">
+              <p className="mt-4 text-xs text-[#82868E] leading-normal max-w-[420px]">
                 By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
               </p>
             </div>
           </div>
 
-          {/* Right Columns: Nav Groups */}
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+          {/* Right Columns: Exact Featured Categories & Company */}
+          <div className="lg:col-span-6 grid grid-cols-2 gap-8 sm:gap-12">
             {footerLinkGroups.map((group, idx) => (
               <div key={idx}>
                 <h3 className="font-sans font-semibold text-sm text-[#242528] uppercase tracking-wider mb-4">

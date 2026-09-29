@@ -8,11 +8,6 @@ import { courseFilterCategories, featuredCourses } from "@/data/content";
 export const CourseDirectory: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState("featured");
 
-  // Row 1 (first 8 categories)
-  const row1Categories = courseFilterCategories.slice(0, 8);
-  // Row 2 (next 6 categories)
-  const row2Categories = courseFilterCategories.slice(8);
-
   const filteredCourses =
     selectedCategory === "featured"
       ? featuredCourses
@@ -38,11 +33,11 @@ export const CourseDirectory: React.FC = () => {
           </p>
         </div>
 
-        {/* 2-Row Category Filter Pills matching Figma Screenshot 3 */}
+        {/* 3-Row Category Filter Pills matching Figma Screenshots 3 & 4 */}
         <div className="flex flex-col items-center gap-2.5 sm:gap-3 mb-12 sm:mb-16">
           {/* Row 1 */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            {row1Categories.map((cat) => {
+            {courseFilterCategories.row1.map((cat) => {
               const isSelected = selectedCategory === cat.slug;
               return (
                 <button
@@ -63,7 +58,41 @@ export const CourseDirectory: React.FC = () => {
 
           {/* Row 2 */}
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
-            {row2Categories.map((cat) => {
+            {courseFilterCategories.row2.map((cat) => {
+              const isSelected = selectedCategory === cat.slug;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat.slug)}
+                  className={`px-5 py-2 rounded-full text-xs sm:text-sm font-medium font-sans transition-all duration-200 cursor-pointer ${
+                    isSelected
+                      ? "bg-[#D4FB20] text-[#242528] font-semibold shadow-sm"
+                      : "bg-[#F5F5F6] text-[#4B4C53] hover:bg-[#E5E6E8] hover:text-[#242528]"
+                  }`}
+                >
+                  {cat.name}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Row 3 (Productivity, Web Development, Data Science, Cooking, + More) matching Screenshot 4 */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+            {courseFilterCategories.row3.map((cat) => {
+              if (cat.isMore) {
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setSelectedCategory("featured")}
+                    className="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold font-sans text-[#003BE2] hover:bg-[#003BE2]/10 transition-colors cursor-pointer"
+                  >
+                    + More
+                  </button>
+                );
+              }
+
               const isSelected = selectedCategory === cat.slug;
               return (
                 <button
