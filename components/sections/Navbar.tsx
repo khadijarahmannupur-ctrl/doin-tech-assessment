@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { navItems } from "@/data/content";
+import Image from "next/image";
 
 interface NavbarProps {
   activeSection?: string;
@@ -40,11 +41,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-[#003BE2]/95 backdrop-blur-md shadow-lg py-3.5 border-b border-white/10"
-          : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? "bg-[#003BE2]/95 backdrop-blur-md shadow-lg py-3.5 border-b border-white/10"
+        : "bg-transparent py-6"
+        }`}
     >
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
@@ -53,27 +53,22 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
           className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
           aria-label="ByteSpace Home"
         >
-          {/* Exact Logo Icon from Figma */}
-          <div className="w-[30px] h-[30px] relative flex items-center justify-center">
-            <svg
-              className="w-7 h-7 text-[#D4FB20] transition-transform duration-300 group-hover:scale-105"
-              viewBox="0 0 29 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M14.5 0L28.7894 8.25V24.75L14.5 33L0.210583 24.75V8.25L14.5 0Z"
-                fill="currentColor"
-              />
-              <path
-                d="M14.5 7L22.5 11.5V20.5L14.5 25L6.5 20.5V11.5L14.5 7Z"
-                fill="#003BE2"
-              />
-            </svg>
-          </div>
-          <span className="font-bold text-[22px] font-display tracking-tight text-white">
-            ByteSpace
-          </span>
+          <Image
+            src="/assets/byte-space-logo-icon.png"
+            alt=""
+            width={30}
+            height={30}
+            className="transition-transform duration-300 group-hover:scale-105"
+            priority
+          />
+          <Image
+            src="/assets/byte-space-logo-text.png"
+            alt="ByteSpace"
+            width={110}
+            height={22}
+            className="h-[20px] w-auto mt-2"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -86,9 +81,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection = "hero" }) => {
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-[15px] font-medium font-sans transition-all duration-200 py-1 relative hover:text-white ${
-                  isActive ? "text-white font-semibold" : "text-white/85"
-                }`}
+                className={`text-[15px] font-medium font-sans transition-all duration-200 py-1 relative hover:text-white ${isActive ? "text-white font-semibold" : "text-white/85"
+                  }`}
               >
                 {item.label}
               </a>

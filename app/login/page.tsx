@@ -2,14 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
+import { AuthVisualSide } from "@/components/sections/AuthVisualSide";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginSuccess, setLoginSuccess] = useState(false);
@@ -40,231 +37,153 @@ export default function LoginPage() {
       setTimeout(() => {
         setIsSubmitting(false);
         setLoginSuccess(true);
-      }, 1000);
+      }, 800);
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#003BE2] bg-grid-pattern flex flex-col justify-between p-4 sm:p-6 lg:p-10 relative overflow-hidden">
-      {/* Decorative 3D elements */}
-      <div className="absolute top-[8%] left-[2%] w-[120px] h-[120px] pointer-events-none opacity-80 animate-float-slow hidden xl:block">
-        <Image
-          src="/assets/cone-small.png"
-          alt="Decorative Cone"
-          width={120}
-          height={120}
-          className="object-contain"
-        />
-      </div>
-
-      <div
-        className="absolute bottom-[10%] left-[30%] w-[140px] h-[140px] pointer-events-none opacity-80 animate-float-slow hidden xl:block"
-        style={{ animationDelay: "2s" }}
-      >
-        <Image
-          src="/assets/cone-large.png"
-          alt="Decorative Cone"
-          width={140}
-          height={140}
-          className="object-contain"
-        />
-      </div>
-
-      {/* Header with Logo */}
-      <header className="max-w-[1320px] w-full mx-auto flex items-center justify-between z-10 mb-8">
-        <Link href="/" className="flex items-center gap-2.5 group focus:outline-none">
-          <div className="w-8 h-8 relative flex items-center justify-center">
-            <svg
-              className="w-7 h-7 text-[#D4FB20] group-hover:scale-110 transition-transform"
-              viewBox="0 0 29 32"
-              fill="none"
-            >
-              <path
-                d="M14.5 0L28.7894 8.25V24.75L14.5 33L0.210583 24.75V8.25L14.5 0Z"
-                fill="currentColor"
-              />
-              <path
-                d="M14.5 7L22.5 11.5V20.5L14.5 25L6.5 20.5V11.5L14.5 7Z"
-                fill="#003BE2"
-              />
-            </svg>
-          </div>
-          <span className="font-bold text-2xl font-display tracking-tight text-white">
-            ByteSpace
-          </span>
-        </Link>
-
-        <Link
-          href="/"
-          className="text-sm font-medium font-sans text-white/80 hover:text-white flex items-center gap-1.5 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to home
-        </Link>
-      </header>
-
-      {/* Main Container */}
-      <main className="max-w-[1240px] w-full mx-auto my-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center z-10 py-6">
-        {/* Left: Info & Visuals */}
-        <div className="lg:col-span-6 flex flex-col justify-center text-white pr-0 lg:pr-8">
-          <span className="inline-block px-3.5 py-1 rounded-full bg-white/15 text-[#D4FB20] text-xs font-semibold uppercase tracking-wider w-fit mb-4">
-            Welcome Back
-          </span>
-          <h1 className="font-poppins font-semibold text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
-            Sign in with ease
-          </h1>
-          <p className="mt-4 font-sans text-base sm:text-lg text-[#E5E6E8] leading-relaxed max-w-[480px]">
-            Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.
-          </p>
-
-          {/* Mini preview card */}
-          <div className="mt-8 hidden sm:flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-[20px] p-4 border border-white/20 max-w-[420px]">
-            <div className="w-16 h-12 rounded-[12px] bg-white/20 relative overflow-hidden shrink-0">
-              <Image src="/assets/course-figma.png" alt="Course" fill className="object-cover" />
-            </div>
-            <div>
-              <h4 className="font-semibold text-sm text-white">Learn Figma from Basic</h4>
-              <p className="text-xs text-[#D4FB20] font-medium mt-0.5">Resume where you left off</p>
-            </div>
-          </div>
+    <div className="min-h-screen bg-[#003BE2] bg-grid-pattern flex items-center justify-center p-4 sm:p-6 lg:p-12 relative overflow-x-hidden">
+      <div className="max-w-[1200px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        
+        {/* Left Side: Brand & Visuals */}
+        <div className="lg:col-span-6 flex justify-center lg:justify-start">
+          <AuthVisualSide
+            headline="Sign in with ease"
+            subtext="Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge."
+          />
         </div>
 
-        {/* Right: Form Card */}
+        {/* Right Side: Form Card matching Screenshot 2 */}
         <div className="lg:col-span-6 flex justify-center lg:justify-end">
-          <div className="w-full max-w-[520px] bg-white rounded-[28px] p-7 sm:p-10 shadow-2xl border border-white/20">
-            <h2 className="font-poppins font-semibold text-2xl sm:text-3xl text-[#242528] mb-2">
+          <div className="w-full max-w-[500px] bg-white rounded-[28px] sm:rounded-[36px] p-8 sm:p-12 shadow-2xl">
+            
+            {/* Top Label & Title */}
+            <span className="text-sm font-medium font-sans text-[#003BE2] block mb-1">
               Sign In
+            </span>
+            <h2 className="font-poppins font-bold text-3xl sm:text-[38px] text-[#242528] leading-tight mb-8">
+              Welcome Back
             </h2>
-            <p className="text-sm font-sans text-[#82868E] mb-6">
-              Enter your credentials to access your account
-            </p>
 
             {loginSuccess ? (
-              <div className="p-6 bg-green-50 border border-green-200 rounded-[16px] text-center my-6">
-                <div className="w-12 h-12 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+              <div className="p-6 bg-green-50 border border-green-200 rounded-[16px] text-center my-4">
+                <div className="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-2 text-lg font-bold">
                   ✓
                 </div>
-                <h3 className="font-poppins font-semibold text-lg text-green-800">
+                <h3 className="font-poppins font-semibold text-base text-green-800">
                   Signed in successfully!
                 </h3>
-                <p className="text-sm text-green-700 mt-1">
-                  Redirecting to your course library...
-                </p>
                 <Link
                   href="/"
-                  className="mt-4 inline-block text-xs font-semibold text-[#003BE2] hover:underline"
+                  className="mt-3 inline-block text-xs font-semibold text-[#003BE2] hover:underline"
                 >
-                  Click here if not redirected automatically
+                  Return to homepage
                 </Link>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <Input
-                  label="Email"
-                  type="email"
-                  placeholder="name@example.com"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (errors.email) setErrors({ ...errors, email: undefined });
-                  }}
-                  error={errors.email}
-                  required
-                />
-
-                <Input
-                  label="Password"
-                  type="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    if (errors.password) setErrors({ ...errors, password: undefined });
-                  }}
-                  error={errors.password}
-                  required
-                />
-
-                <div className="flex items-center justify-between pt-1">
-                  <label className="flex items-center gap-2 cursor-pointer select-none">
-                    <input
-                      type="checkbox"
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 rounded border-gray-300 text-[#003BE2] focus:ring-[#003BE2]"
-                    />
-                    <span className="text-xs sm:text-sm text-[#4B4C53] font-sans">
-                      Remember me
-                    </span>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Email Field */}
+                <div>
+                  <label className="block text-xs font-medium text-[#242528] mb-1.5 font-sans">
+                    Email
                   </label>
-                  <a
-                    href="#"
-                    className="text-xs sm:text-sm font-medium text-[#003BE2] hover:underline"
-                  >
-                    Forgot password?
-                  </a>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (errors.email) setErrors({ ...errors, email: undefined });
+                    }}
+                    placeholder="designer@example.com"
+                    className={`w-full h-[48px] px-4 rounded-[12px] border font-sans text-sm text-[#242528] placeholder:text-[#CED0D3] focus:outline-none focus:ring-2 focus:ring-[#003BE2] focus:border-transparent transition-all ${
+                      errors.email ? "border-red-500" : "border-[#E5E6E8]"
+                    }`}
+                  />
+                  {errors.email && (
+                    <p className="text-[11px] text-red-500 mt-1 font-medium">{errors.email}</p>
+                  )}
                 </div>
 
-                <Button
-                  type="submit"
-                  variant="brand"
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="w-full mt-2 font-bold shadow-md hover:shadow-lg"
-                >
-                  {isSubmitting ? "Signing In..." : "Sign In"}
-                </Button>
+                {/* Password Field */}
+                <div>
+                  <label className="block text-xs font-medium text-[#242528] mb-1.5 font-sans">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      if (errors.password) setErrors({ ...errors, password: undefined });
+                    }}
+                    placeholder="********"
+                    className={`w-full h-[48px] px-4 rounded-[12px] border font-sans text-sm text-[#242528] placeholder:text-[#CED0D3] focus:outline-none focus:ring-2 focus:ring-[#003BE2] focus:border-transparent transition-all ${
+                      errors.password ? "border-red-500" : "border-[#E5E6E8]"
+                    }`}
+                  />
+                  {errors.password && (
+                    <p className="text-[11px] text-red-500 mt-1 font-medium">{errors.password}</p>
+                  )}
+                </div>
 
-                <div className="relative my-6 flex items-center justify-center">
+                {/* Right-aligned Lime Sign In Pill Button matching Screenshot 2 */}
+                <div className="flex justify-end pt-1">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-8 py-2.5 rounded-full bg-[#D4FB20] hover:bg-[#c0e815] active:scale-95 text-[#242528] font-sans font-semibold text-sm transition-all shadow-sm cursor-pointer"
+                  >
+                    {isSubmitting ? "Signing In..." : "Sign In"}
+                  </button>
+                </div>
+
+                {/* Divider Line with 'or' */}
+                <div className="relative my-7 flex items-center justify-center">
                   <div className="border-t border-[#E5E6E8] w-full" />
-                  <span className="bg-white px-3 text-xs uppercase tracking-wider text-[#82868E] font-medium absolute">
-                    Or continue with
+                  <span className="bg-white px-3 text-xs text-[#82868E] font-sans absolute">
+                    or
                   </span>
                 </div>
 
-                {/* Social Login */}
-                <div className="grid grid-cols-3 gap-3">
+                {/* Circular Social Buttons (Facebook & Google) matching Screenshot 2 */}
+                <div className="flex items-center justify-center gap-4">
+                  {/* Facebook */}
                   <button
                     type="button"
-                    className="flex items-center justify-center py-2.5 px-4 rounded-[12px] border border-[#CED0D3] hover:bg-[#F5F5F6] transition-colors font-sans text-xs font-semibold text-[#242528]"
+                    aria-label="Sign in with Facebook"
+                    className="w-12 h-12 rounded-full border border-[#E5E6E8] hover:bg-[#F5F5F6] flex items-center justify-center transition-colors cursor-pointer"
                   >
-                    Google
+                    <svg className="w-5 h-5 fill-black" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
                   </button>
+
+                  {/* Google */}
                   <button
                     type="button"
-                    className="flex items-center justify-center py-2.5 px-4 rounded-[12px] border border-[#CED0D3] hover:bg-[#F5F5F6] transition-colors font-sans text-xs font-semibold text-[#242528]"
+                    aria-label="Sign in with Google"
+                    className="w-12 h-12 rounded-full border border-[#E5E6E8] hover:bg-[#F5F5F6] flex items-center justify-center transition-colors cursor-pointer"
                   >
-                    Apple
-                  </button>
-                  <button
-                    type="button"
-                    className="flex items-center justify-center py-2.5 px-4 rounded-[12px] border border-[#CED0D3] hover:bg-[#F5F5F6] transition-colors font-sans text-xs font-semibold text-[#242528]"
-                  >
-                    GitHub
+                    <svg className="w-5 h-5 fill-black" viewBox="0 0 24 24">
+                      <path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z" />
+                    </svg>
                   </button>
                 </div>
 
-                <p className="text-center text-xs sm:text-sm text-[#4B4C53] pt-4 font-sans">
-                  Don&apos;t have an account?{" "}
-                  <Link
-                    href="/register"
-                    className="font-bold text-[#003BE2] hover:underline"
-                  >
-                    Sign up
+                {/* Bottom Link */}
+                <p className="text-center text-xs text-[#4B4C53] pt-6 font-sans">
+                  New user?{" "}
+                  <Link href="/register" className="font-semibold text-[#003BE2] hover:underline">
+                    Create an account
                   </Link>
                 </p>
               </form>
             )}
+
           </div>
         </div>
-      </main>
 
-      {/* Auth Footer */}
-      <footer className="max-w-[1320px] w-full mx-auto text-center text-xs text-white/60 z-10 pt-6">
-        © 2023 ByteSpace. All rights reserved.
-      </footer>
+      </div>
     </div>
   );
 }
