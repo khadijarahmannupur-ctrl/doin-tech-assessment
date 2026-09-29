@@ -80,9 +80,9 @@ export const CtaBanner: React.FC = () => {
       </div>
 
       {/* 7. Bottom-Right: Lime Twist Spring (Node 34:1221) */}
-      <div className="absolute -bottom-10 -right-8 sm:right-[1%] lg:right-[3%] w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] lg:w-[210px] lg:h-[210px] pointer-events-none z-10 animate-float-slow">
+      <div className="absolute -bottom-23 -right-8 sm:right-[1%] lg:right-[3%] w-[130px] h-[130px] sm:w-[180px] sm:h-[180px] lg:w-[210px] lg:h-[210px] pointer-events-none z-10 animate-float-slow">
         <Image
-          src="/assets/lime-twist-spring.png"
+          src="/assets/Frame (15).png"
           alt="3D Lime Spring"
           width={210}
           height={210}

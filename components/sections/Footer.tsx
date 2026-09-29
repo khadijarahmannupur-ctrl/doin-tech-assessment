@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { footerLinkGroups, footerLegalLinks } from "@/data/content";
+import Image from "next/image";
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -26,27 +27,27 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-6 flex flex-col justify-between">
             <div>
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2 mb-4 inline-flex group">
-                <div className="w-[30px] h-[30px] relative flex items-center justify-center">
-                  <svg
-                    className="w-7 h-7 text-[#003BE2] group-hover:scale-105 transition-transform"
-                    viewBox="0 0 29 32"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M14.5 0L28.7894 8.25V24.75L14.5 33L0.210583 24.75V8.25L14.5 0Z"
-                      fill="currentColor"
-                    />
-                    <path
-                      d="M14.5 7L22.5 11.5V20.5L14.5 25L6.5 20.5V11.5L14.5 7Z"
-                      fill="#D4FB20"
-                    />
-                  </svg>
-                </div>
-                <span className="font-bold text-[22px] font-display tracking-tight text-[#242528]">
-                  ByteSpace
-                </span>
+              <Link
+                href="/"
+                className="flex items-center gap-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-lg"
+                aria-label="ByteSpace Home"
+              >
+                <Image
+                  src="/assets/footer-logo.png"
+                  alt=""
+                  width={170}
+                  height={40}
+                  className="transition-transform duration-300 group-hover:scale-105"
+                  priority
+                />
+                {/* <Image
+                          src="/assets/byte-space-logo-text.png"
+                          alt="ByteSpace"
+                          width={110}
+                          height={22}
+                          className="h-[20px] w-auto mt-2"
+                          priority
+                        /> */}
               </Link>
 
               <p className="font-sans text-sm text-[#4B4C53] max-w-[380px] leading-relaxed mb-6">
