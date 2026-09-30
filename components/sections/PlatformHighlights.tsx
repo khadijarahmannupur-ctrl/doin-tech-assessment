@@ -10,7 +10,7 @@ export const PlatformHighlights: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
         {/* Top-Right & Top-Center Lime/Green Glow */}
         <div className="absolute -top-[100px] left-[20%] sm:left-[35%] lg:left-[45%] w-[450px] sm:w-[650px] lg:w-[850px] h-[450px] sm:h-[650px] lg:h-[850px] rounded-full bg-[#D4FB20]/35 blur-[90px] sm:blur-[120px]" />
-        
+
         {/* Center-Left Soft Cyan/Blue Glow */}
         <div className="absolute top-[25%] -left-[150px] sm:-left-[100px] w-[400px] sm:w-[550px] lg:w-[700px] h-[400px] sm:h-[550px] lg:h-[700px] rounded-full bg-[#38BDF8]/25 sm:bg-[#38BDF8]/30 blur-[100px] sm:blur-[130px]" />
 
@@ -52,11 +52,11 @@ export const PlatformHighlights: React.FC = () => {
           {/* Right: Visual Cluster (Learner Person, Course Card, 55% Progress, Lime Twist) */}
           <div className="lg:col-span-6 relative flex items-center justify-center">
             <div className="relative w-full max-w-[340px] sm:max-w-[460px] md:max-w-[540px] lg:max-w-[580px] h-[340px] sm:h-[420px] md:h-[480px] lg:h-[500px] mx-auto flex items-center justify-center">
-              
+
               {/* 1. Lime Twist Shape on the top-right */}
               <div className="absolute top-[2%] sm:top-[4%] md:top-[4%] lg:top-[4%] right-[2%] sm:right-[4%] md:right-[6%] lg:right-[4%] w-[70px] h-[95px] sm:w-[95px] sm:h-[130px] md:w-[110px] md:h-[150px] lg:w-[120px] lg:h-[165px] pointer-events-none z-10 animate-float-slow">
                 <Image
-                  src="/assets/lime-twist-spring.png"
+                  src="/assets/Frame (13).png"
                   alt="3D Lime Twist"
                   width={120}
                   height={165}
@@ -130,7 +130,7 @@ export const PlatformHighlights: React.FC = () => {
           {/* Left: Visual Cluster (Female Creator, Revenue Cards, Lime Twist, Happy Students) */}
           <div className="lg:col-span-6 relative flex items-center justify-center">
             <div className="relative w-full max-w-[340px] sm:max-w-[460px] md:max-w-[540px] lg:max-w-[560px] h-[360px] sm:h-[440px] md:h-[500px] lg:h-[520px] mx-auto flex items-center justify-center">
-              
+
               {/* 1. Blue Glass Card 1: Total Revenue (Top Left) */}
               <div className="absolute top-[4%] sm:top-[6%] md:top-[6%] lg:top-[4%] left-[0%] sm:left-[1%] md:left-[2%] lg:left-[0%] w-[145px] sm:w-[180px] md:w-[200px] lg:w-[210px] bg-[#003BE2] rounded-[14px] sm:rounded-[18px] p-2.5 sm:p-3.5 md:p-4 text-white shadow-xl z-20 bg-grid-pattern-subtle">
                 <span className="text-[9px] sm:text-[10px] text-white/80 block uppercase tracking-wider font-sans">
@@ -162,7 +162,7 @@ export const PlatformHighlights: React.FC = () => {
               {/* 3. Lime Twist Shape on Right */}
               <div className="absolute top-[14%] sm:top-[16%] md:top-[18%] lg:top-[18%] right-[4%] sm:right-[8%] md:right-[10%] lg:right-[8%] w-[65px] h-[90px] sm:w-[90px] sm:h-[125px] md:w-[105px] md:h-[145px] lg:w-[115px] lg:h-[155px] pointer-events-none z-10 animate-float-slow">
                 <Image
-                  src="/assets/lime-twist-spring.png"
+                  src="/assets/Frame (13).png"
                   alt="3D Lime Twist"
                   width={115}
                   height={155}
